@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Website</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="https://deepinout.com/favicon.ico">
+        <style type="text/css">
+            body {
+                background-color: #f0f0f2;
+                margin: 0;
+                padding: 0;
+                font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+            div {
+                width: 600px;
+                margin: 5em auto;
+                padding: 2em;
+                background-color: #fdfdff;
+                border-radius: 0.5em;
+                box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+            }
+            a:link, a:visited {
+                color: #38488f;
+                text-decoration: none;
+            }
+        </style>
+        <script>
+            function validateForm(event) {
+                const userName = document.getElementById('userName').value;
+                const userMessage = document.getElementById('userMessage').value;
+                if (userName.includes('|') || userMessage.includes('|')) {
+                    alert('昵称和留言内容不能包含 "|" 符号。');
+                    event.preventDefault(); // 阻止表单提交
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <h1>Sam's Website</h1>
+            <span style="color: red">Webmaster message: Any ideas about this website can be left in a message!</span>
+            <span>Contact Email: aqiulawrence@gmail.com</span>
+            <h3>Message Board</h3>
+            <form action="/submit" method="post" onsubmit="validateForm(event)">
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" name="userName" style="width: 90px;" required autocomplete="off">
+                <label for="userMessage">Content:</label>
+                <input type="text" id="userMessage" name="userMessage" required autocomplete="off">
+                <button type="submit">Submit</button>
+            </form>
+            {% for message in messages %}
+                    <strong>{{ message.timestamp }} - {{ message.name }}:</strong> {{ message.text }}<br>
+            {% endfor %}
+        </div>
+    </body>
+</html>
