@@ -38,19 +38,8 @@
     <body>
         <div>
             <h1>Sam's Website</h1>
-            <span style="color: red">Webmaster message: Any ideas about this website can be left in a message!</span>
+            <span style="color: red">Webmaster message: 网站维护中...</span>
             <span>Contact Email: aqiulawrence@gmail.com</span>
-            <h3>Message Board</h3>
-            <form action="/submit" method="post" onsubmit="validateForm(event)">
-                <label for="userName">Name:</label>
-                <input type="text" id="userName" name="userName" style="width: 90px;" required autocomplete="off">
-                <label for="userMessage">Content:</label>
-                <input type="text" id="userMessage" name="userMessage" required autocomplete="off">
-                <button type="submit">Submit</button>
-            </form>
-            {% for message in messages %}
-                    <strong>{{ message.timestamp }} - {{ message.name }}:</strong> {{ message.text }}<br>
-            {% endfor %}
         </div>
     </body>
 </html>
